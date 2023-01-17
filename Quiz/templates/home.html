@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <title>Country Quiz App</title>
+  </head>
+  <body>
+    <div class="container-fluid p-2 bg-primary text-white text-center">
+      <h1>Capital Quiz App</h1>
+    </div>
+    {% if quiz_started == True %}
+    <div class="container-fluid p-0">
+      {% if messages %} {% for message in messages %}
+      <div
+        {%
+        if
+        message.tags
+        %}
+        class="alert {{ message.tags }} alert-dismissible"
+        {%
+        endif
+        %}
+      >
+        {{ message }}
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+    <div class="container mt-5">
+      <form action="/" method="post">
+        <div class="form-group">
+          {% csrf_token %}
+          <label for="exampleInputEmail1"
+            >What is the capital of {{country}} ?</label
+          >
+          <input type="hidden" name="country-q" value="{{country}}" />
+          <input type="hidden" name="question" value="{{capital}}" />
+
+          <br />
+          {{ form }}
+
+          <br />
+          <small id="emailHelp" class="form-text text-muted"
+            >Please enter the capital of the country mentioned above</small
+          >
+        </div>
+
+        <button type="submit" class="btn btn-primary" name="answer">
+          Submit Answer
+        </button>
+      </form>
+    </div>
+    {% else %}
+    <div class="h-100 d-flex align-items-center justify-content-center">
+      <form action="/" method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary" name="quiz-start">
+          Start Quiz
+        </button>
+      </form>
+    </div>
+    {% endif%}
+  </body>
+</html>
