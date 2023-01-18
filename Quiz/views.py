@@ -37,7 +37,7 @@ class QuizGame(View):
 
 
             if input_answer:
-                input_answer == input_answer.capitalize()
+                input_answer = input_answer.title()
                 if input_answer == correct_answer:
                     messages.success(request,"WELL DONE!! YOU GOT IT RIGHT")
 
