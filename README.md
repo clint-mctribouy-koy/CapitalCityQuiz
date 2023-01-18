@@ -5,3 +5,4 @@
 - install django with the command pip install django 
 - cd into repo 
 - run the dev server locally with python manage.py runserver
+-(fixed input capitalisation)
