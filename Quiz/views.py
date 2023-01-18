@@ -31,7 +31,7 @@ class QuizGame(View):
             form = QuizForm
 
             random_country = random.sample(list(all_countries), 1)
-            input_answer = request.POST.get('capital_city_field')
+            input_answer = request.POST.get('capital_city_field').capitalize()
             correct_answer = request.POST.get('question')
             
 
