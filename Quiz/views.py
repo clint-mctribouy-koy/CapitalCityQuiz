@@ -31,12 +31,13 @@ class QuizGame(View):
             form = QuizForm
 
             random_country = random.sample(list(all_countries), 1)
-            input_answer = request.POST.get('capital_city_field').capitalize()
+            input_answer = request.POST.get('capital_city_field')
             correct_answer = request.POST.get('question')
             
 
 
             if input_answer:
+                input_answer == input_answer.capitalize()
                 if input_answer == correct_answer:
                     messages.success(request,"WELL DONE!! YOU GOT IT RIGHT")
 
