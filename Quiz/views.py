@@ -6,7 +6,7 @@ import requests
 import random
 from django.template import loader
 from django.contrib import messages
-
+import string
 from .models import Quiz
 
 
@@ -37,7 +37,7 @@ class QuizGame(View):
 
 
             if input_answer:
-                input_answer = input_answer.title()
+                input_answer = string.capwords(input_answer)
                 if input_answer == correct_answer:
                     messages.success(request,"WELL DONE!! YOU GOT IT RIGHT")
 
