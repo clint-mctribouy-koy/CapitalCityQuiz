@@ -16,7 +16,7 @@ from django.views.generic import View
 # Create your views here.
 class QuizGame(View):
     def post(self, request):
-        if request.method == 'POST':
+        
             all_countries = {}
             url = 'https://countriesnow.space/api/v0.1/countries/capital'
             response = requests.get(url)
